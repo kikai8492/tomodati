@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to login_path unless user_signed_in?
   end
 
   def create

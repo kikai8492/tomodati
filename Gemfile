@@ -21,6 +21,10 @@ gem 'bcrypt'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'bootstrap', '~> 4.4.1'
+
+gem 'jquery-rails'
+
 group :development, :test do
   
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -42,6 +46,7 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   
   gem 'webdrivers'
+  gem 'pry-rails'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
