@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :login_required, only: [:new, :create]
+  
   def new
-    redirect_to login_path unless user_signed_in?
   end
 
   def create

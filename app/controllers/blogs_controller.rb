@@ -22,7 +22,7 @@ class BlogsController < ApplicationController
   end
 
   def confirm
-    @blog = Blog.find(params[:id])
+    @blog = current_user.blogs.build(blog_params)
     render :new if @blog.invalid?
   end
 
@@ -32,16 +32,19 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    if
+    if @blog.update(post_params)
+      redirect_to blogs_path 
     else
+      render :new
     end
   end
     
-  private
-
   def destroy
     @blog = Blog.find(params[:id])
   end
+  private
+
+  
   
   def blog_params
     params.require(:blog).permit(:content)

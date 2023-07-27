@@ -1,0 +1,6 @@
+<h3>以下の内容を投稿してもよろしいですか？</h3>
+<%= form_with(model: @blog, local: true) do |form| %>
+  <%= form.hidden_field :content %>
+  <p>ツイート内容:<%= @blog.content %></p>
+  <%= form.submit  "投稿する" %>
+<% end %>
