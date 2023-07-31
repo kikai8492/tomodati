@@ -4,7 +4,12 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = Blog.new
+    if params[:back]
+      @blog = Blog.new(blog_params)
+    else
+      @blog = Blog.new
+    end
+    
   end
 
   def create
@@ -23,16 +28,18 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = current_user.blogs.build(blog_params)
+    # @blog = Blog.find(params[:id])
     render :new if @blog.invalid?
   end
 
   def edit
-    @blog = current_user.blogs.build(blog_params)
+    @blog = Blog.find(params[:id])
   end
 
   def update
     @blog = Blog.find(params[:id])
-    if @blog.update(post_params)
+    render :new if params[:back]
+    if @blog.update(blog_params)
       redirect_to blogs_path 
     else
       render :new
@@ -41,12 +48,14 @@ class BlogsController < ApplicationController
     
   def destroy
     @blog = Blog.find(params[:id])
+    @blog.destroy
+    if @blog.destroy
+      redirect_to blogs_path flash[:notice] = "削除しました!"
+    end
   end
   private
 
-  
-  
   def blog_params
-    params.require(:blog).permit(:content)
+    params.require(:blog).permit(:content, :image, :image_cache)
   end
 end

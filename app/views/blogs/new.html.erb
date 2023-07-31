@@ -1,17 +1,3 @@
-<div class = "container">
-  <%= form_with(model: @blog, url: confirm_blogs_path, method: :post, local: true) do |form| %>
-    <% if @blog.errors.any? %>
-    <div class="error_messages">
-      <% @blog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </div>
-    <% end %>
-
-    <div class="blog">
-      <%= form.label :content, "投稿内容", class: "content" %>
-      <%= form.text_field :content, class: "text", placeholder: "内容を入力"%>
-    </div>
-    <%= form.submit%>
-  <% end %>
-</div>
+<h1>内容入力画面</h1>
+<%= render 'form' %>
+<%= link_to "戻る", :back %>
