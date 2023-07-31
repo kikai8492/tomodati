@@ -32,6 +32,7 @@ gem 'mini_magick'
 group :development, :test do
   
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
 end
 
 group :development do
@@ -50,7 +51,7 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   
   gem 'webdrivers'
-  gem 'pry-rails'
+  
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

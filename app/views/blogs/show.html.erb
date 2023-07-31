@@ -2,7 +2,11 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @blog.image.url %>
+  <% if @blog.image? %>
+    <%= image_tag @blog.image.url %>
+  <% else %>
+    <p>画像は無し</p>
+  <% end %>
 </p>
 
 
