@@ -1,13 +1,16 @@
-<p><%= @blog.content%></p>
+<div class="container">
+  <h2>内容</h2>
+  <p class="content"><%= @blog.content%></p>
 
-<p>
-  <strong>Image:</strong>
-  <% if @blog.image? %>
-    <%= image_tag @blog.image.url %>
-  <% else %>
-    <p>画像は無し</p>
-  <% end %>
-</p>
+  <p>
+    <strong>Image</strong>
+    <% if @blog.image? %>
+      <%= image_tag @blog.image.url class:"img"%>
+    <% else %>
+      <p>画像は無し</p>
+    <% end %>
+  </p>
 
 
-<%= link_to "戻る", :back %>
+  <%= link_to "戻る", blogs_path %>
+</div>
