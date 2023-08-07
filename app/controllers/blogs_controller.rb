@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = current_user.blogs.build(blog_params)
+    @blog = current_user.blogs.build(blog_params) #ログインしているユーザーがブログを作成し、それを@blogに代入
     render :new if params[:back]
     if @blog.save
       redirect_to blogs_path flash[:notice] = "投稿しました!"
